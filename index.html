@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Olalekan Lucas — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
 <style>
   :root {
     --navy:    #0D2137;
@@ -111,11 +111,39 @@
   h1 {
     font-family: 'Syne', sans-serif;
     font-size: clamp(3rem, 7vw, 5.2rem);
-    font-weight: 800; line-height: 1.05;
+    font-weight: 800; line-height: 1.1;
     animation: fadeUp 0.8s 0.15s ease both;
   }
-  h1 .name-teal { color: var(--teal); }
-  h1 .name-dim  { color: var(--muted); font-weight: 400; }
+  h1 .name-dim {
+    color: var(--muted); font-weight: 300;
+    font-size: clamp(0.85rem, 1.6vw, 1.1rem);
+    font-family: 'DM Sans', sans-serif;
+    display: block; margin-bottom: 0.5rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  h1 .name-teal {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+    letter-spacing: -0.03em;
+    display: inline-block;
+  }
+  h1 .name-teal .bounce-letter {
+    background: linear-gradient(135deg, #0cc5d4 0%, #0E9AA7 50%, #1B6CA8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 18px rgba(14,154,167,0.5));
+  }
+  h1 .name-lucas {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+    color: var(--white);
+    letter-spacing: -0.03em;
+    display: inline-block;
+    margin-left: 0.3em;
+  }
 
   .hero-sub {
     margin-top: 1.4rem;
@@ -285,7 +313,32 @@
     color: var(--muted); font-size: 0.8rem;
   }
 
-  /* ── ANIMATIONS ── */
+  /* ── LETTER SLAM ANIMATION ── */
+  .bounce-letter {
+    display: inline-block;
+    opacity: 0;
+    position: relative;
+  }
+  .space-letter { display: inline-block; width: 0.3em; }
+
+  @keyframes slamIn {
+    0%   { opacity: 0; transform: var(--start) scale(2.5) rotate(var(--rot)); filter: blur(8px); }
+    55%  { opacity: 1; transform: translate(0,0) scale(1.25) rotate(calc(var(--rot) * -0.3)); filter: blur(0); }
+    70%  { transform: translate(0,0) scale(0.88) rotate(2deg); }
+    82%  { transform: translate(0,0) scale(1.08) rotate(-1deg); }
+    91%  { transform: translate(0,0) scale(0.97) rotate(0.5deg); }
+    100% { opacity: 1; transform: translate(0,0) scale(1) rotate(0deg); filter: blur(0); }
+  }
+
+  @keyframes glowPulse {
+    0%   { text-shadow: 0 0 30px rgba(14,154,167,0.9), 0 0 60px rgba(14,154,167,0.6); }
+    100% { text-shadow: 0 0 0px transparent; }
+  }
+
+  .bounce-letter.slammed {
+    animation: glowPulse 0.8s ease-out forwards;
+  }
+
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -325,8 +378,8 @@
   <div class="hero-inner">
     <div class="hero-tag">Available for Remote Work · EST / PST</div>
     <h1>
-      <span class="name-dim">Hi, I'm </span><br>
-      <span class="name-teal">Olalekan</span> Lucas
+      <span class="name-dim">Hi, I'm</span>
+      <span class="name-teal" id="firstName"></span><span class="name-lucas" id="lastName"></span>
     </h1>
     <p class="hero-sub">
       Technical Support & Community Operations Specialist with 3+ years scaling user trust for global digital platforms. ALX-certified VA with deep expertise in Zendesk, HubSpot, and high-volume support operations.
@@ -522,7 +575,60 @@
 </footer>
 
 <script>
-  // Scroll reveal
+  // ── SPECTACULAR LETTER SLAM ──
+  const directions = [
+    'translate(-300px, -200px)', 'translate(300px, -200px)',
+    'translate(-250px, 200px)',  'translate(250px, 200px)',
+    'translate(0, -300px)',      'translate(0, 300px)',
+    'translate(-350px, 0)',      'translate(350px, 0)',
+    'translate(-200px, -280px)', 'translate(200px, -280px)',
+    'translate(-280px, 150px)',  'translate(280px, 150px)',
+    'translate(150px, -320px)',  'translate(-150px, 320px)',
+  ];
+  const rotations = ['-25deg','20deg','-15deg','18deg','-22deg','12deg','-18deg','24deg','-10deg','16deg','-20deg','14deg','-28deg','22deg'];
+
+  function slamLetters(elementId, word, baseDelay, isTeal) {
+    const el = document.getElementById(elementId);
+    word.split('').forEach((char, i) => {
+      const span = document.createElement('span');
+      if (char === ' ') {
+        span.className = 'space-letter';
+      } else {
+        span.className = 'bounce-letter';
+        const dir = directions[i % directions.length];
+        const rot = rotations[i % rotations.length];
+        const delay = baseDelay + i * 100;
+        const dur = 750 + Math.random() * 150;
+
+        span.style.setProperty('--start', dir);
+        span.style.setProperty('--rot', rot);
+        span.style.animationName = 'slamIn';
+        span.style.animationDuration = dur + 'ms';
+        span.style.animationDelay = delay + 'ms';
+        span.style.animationFillMode = 'forwards';
+        span.style.animationTimingFunction = 'cubic-bezier(0.22, 1, 0.36, 1)';
+
+        if (isTeal) {
+          span.style.background = 'linear-gradient(135deg, #0cc5d4 0%, #0E9AA7 50%, #1B6CA8 100%)';
+          span.style.webkitBackgroundClip = 'text';
+          span.style.webkitTextFillColor = 'transparent';
+          span.style.backgroundClip = 'text';
+        }
+
+        // glow flash on land
+        setTimeout(() => {
+          span.classList.add('slammed');
+        }, delay + dur * 0.9);
+      }
+      span.textContent = char;
+      el.appendChild(span);
+    });
+  }
+
+  slamLetters('firstName', 'Olalekan', 200, true);
+  slamLetters('lastName', 'Lucas', 200 + 8 * 100 + 200, false);
+
+
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
