@@ -1,258 +1,491 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Olalekan Lucas — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #0e0e10; --surface: #16161a; --border: #2a2a32;
-    --gold: #c9a84c; --gold-light: #e2c47a; --text: #e8e6df; --muted: #8a8880;
+    --navy:    #0D2137;
+    --navy2:   #112843;
+    --accent:  #1B6CA8;
+    --teal:    #0E9AA7;
+    --teal2:   #0cc5d4;
+    --white:   #FFFFFF;
+    --off:     #F0F6FF;
+    --muted:   #8BAABF;
+    --dark:    #071526;
+    --card:    #132d47;
+    --glow:    rgba(14,154,167,0.18);
   }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
   html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
-  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.4; }
 
-  .hero { position: relative; min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 80px 8vw; border-bottom: 1px solid var(--border); overflow: hidden; }
-  .hero::after { content: ''; position: absolute; top: -20%; right: -10%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%); pointer-events: none; }
-  .hero-text { position: relative; z-index: 1; }
-  .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
-  .hero-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 7vw, 96px); font-weight: 300; line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 8px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
-  .hero-name em { font-style: italic; color: var(--gold-light); }
-  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(15px, 1.8vw, 21px); font-weight: 300; color: var(--muted); margin-bottom: 40px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s; }
-  .hero-bio { font-size: 15px; color: #b0aea8; max-width: 440px; margin-bottom: 48px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s; }
-  .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s ease forwards 1s; }
-  .btn-primary { display: inline-block; padding: 12px 32px; background: var(--gold); color: #0e0e10; text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: background 0.2s, transform 0.2s; }
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
-  .btn-ghost { display: inline-block; padding: 12px 32px; border: 1px solid var(--border); color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: border-color 0.2s, color 0.2s, transform 0.2s; }
-  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-  .hero-right { display: flex; justify-content: flex-end; align-items: center; position: relative; z-index: 1; opacity: 0; animation: fadeIn 1.2s ease forwards 0.6s; }
-  .hero-card { width: 320px; background: var(--surface); border: 1px solid var(--border); padding: 40px 32px; position: relative; }
-  .hero-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: linear-gradient(to bottom, var(--gold), transparent); }
-  .stat-item { margin-bottom: 28px; }
-  .stat-item:last-child { margin-bottom: 0; }
-  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 42px; font-weight: 600; color: var(--gold-light); line-height: 1; }
-  .stat-label { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
 
-  section { padding: 100px 8vw; border-bottom: 1px solid var(--border); position: relative; z-index: 1; }
-  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 58px); font-weight: 300; line-height: 1.1; margin-bottom: 60px; }
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.4;
+  }
 
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2px; }
-  .skill-card { background: var(--surface); padding: 40px 32px; border: 1px solid var(--border); transition: border-color 0.3s, transform 0.3s; position: relative; overflow: hidden; }
-  .skill-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.4s ease; }
-  .skill-card:hover { border-color: var(--gold); transform: translateY(-4px); }
-  .skill-card:hover::after { width: 100%; }
-  .skill-icon { font-size: 28px; margin-bottom: 20px; }
-  .skill-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; margin-bottom: 12px; color: var(--text); }
-  .skill-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-  .tag { font-size: 11px; padding: 4px 12px; border: 1px solid var(--border); color: var(--muted); letter-spacing: 0.05em; }
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(13,33,55,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(14,154,167,0.15);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.2rem; letter-spacing: 0.06em;
+    color: var(--white);
+  }
+  .nav-logo span { color: var(--teal); }
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--teal); }
 
-  .exp-list { display: flex; flex-direction: column; }
-  .exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 40px; padding: 48px 0; border-bottom: 1px solid var(--border); align-items: start; }
-  .exp-item:last-child { border-bottom: none; }
-  .exp-year { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 8px; }
-  .exp-company { font-size: 12px; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
-  .exp-role { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; margin-bottom: 16px; line-height: 1.2; }
-  .exp-desc { font-size: 14px; color: #a0a09a; line-height: 1.8; margin-bottom: 20px; }
-  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .exp-bullets li { font-size: 14px; color: var(--muted); padding-left: 20px; position: relative; }
-  .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
-  .highlight { color: var(--gold-light); font-weight: 500; }
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 8rem 4rem 4rem;
+    position: relative; overflow: hidden;
+  }
 
-  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; }
-  .edu-card { background: var(--surface); border: 1px solid var(--border); padding: 36px 32px; transition: border-color 0.3s; }
-  .edu-card:hover { border-color: var(--gold); }
-  .edu-degree { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; margin-bottom: 6px; }
-  .edu-school { font-size: 12px; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
-  .edu-year { font-size: 13px; color: var(--muted); }
+  /* animated grid background */
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(14,154,167,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14,154,167,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridPan 20s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes gridPan { from { transform: translateY(0); } to { transform: translateY(60px); } }
 
-  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  .contact-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 6vw, 80px); font-weight: 300; line-height: 1.0; margin-bottom: 32px; }
-  .contact-title em { font-style: italic; color: var(--gold-light); }
-  .contact-body { font-size: 15px; color: var(--muted); max-width: 400px; }
-  .contact-links { display: flex; flex-direction: column; gap: 8px; }
-  .contact-link { display: flex; align-items: center; gap: 16px; padding: 20px 24px; background: var(--surface); border: 1px solid var(--border); text-decoration: none; color: var(--text); transition: border-color 0.3s, transform 0.3s; }
-  .contact-link:hover { border-color: var(--gold); transform: translateX(8px); }
-  .contact-link-icon { font-size: 18px; }
-  .contact-link-info { flex: 1; }
-  .contact-link-label { font-size: 10px; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; }
-  .contact-link-value { font-size: 13px; margin-top: 2px; word-break: break-all; }
-  .contact-link-arrow { color: var(--muted); }
+  /* glowing orbs */
+  .orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(80px); pointer-events: none; animation: float 8s ease-in-out infinite;
+  }
+  .orb1 { width: 500px; height: 500px; background: rgba(27,108,168,0.18); top: -100px; right: -80px; animation-delay: 0s; }
+  .orb2 { width: 350px; height: 350px; background: rgba(14,154,167,0.14); bottom: 0; left: -60px; animation-delay: 3s; }
+  @keyframes float {
+    0%,100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-30px) scale(1.05); }
+  }
 
-  footer { padding: 40px 8vw; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
-  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--muted); }
-  .footer-copy { font-size: 12px; color: var(--border); }
+  .hero-inner { max-width: 760px; position: relative; z-index: 1; }
 
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(14,154,167,0.12); border: 1px solid rgba(14,154,167,0.3);
+    border-radius: 100px; padding: 0.4rem 1rem;
+    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 1.8rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--teal); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
 
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 7vw, 5.2rem);
+    font-weight: 800; line-height: 1.1;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  h1 .name-dim {
+    color: var(--muted); font-weight: 300;
+    font-size: clamp(0.85rem, 1.6vw, 1.1rem);
+    font-family: 'DM Sans', sans-serif;
+    display: block; margin-bottom: 0.5rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  h1 .name-teal {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+    letter-spacing: -0.03em;
+    display: inline-block;
+    background: linear-gradient(135deg, #0cc5d4 0%, #0E9AA7 50%, #1B6CA8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 32px rgba(14,154,167,0.4));
+  }
+  h1 .name-lucas {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+    color: var(--white);
+    letter-spacing: -0.03em;
+    display: inline-block;
+    margin-left: 0.3em;
+  }
+
+  .hero-sub {
+    margin-top: 1.4rem;
+    font-size: 1.15rem; color: var(--muted); line-height: 1.7;
+    max-width: 580px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-badges {
+    display: flex; flex-wrap: wrap; gap: 0.7rem;
+    margin-top: 2rem;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+  .badge {
+    padding: 0.35rem 0.9rem; border-radius: 6px;
+    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.04em;
+    border: 1px solid rgba(14,154,167,0.3); color: var(--teal);
+    background: rgba(14,154,167,0.08);
+  }
+
+  .hero-cta {
+    display: flex; gap: 1rem; margin-top: 2.6rem; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.55s ease both;
+  }
+  .btn-primary {
+    padding: 0.8rem 2rem; border-radius: 8px;
+    background: linear-gradient(135deg, var(--teal), var(--accent));
+    color: var(--white); font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; font-weight: 500; border: none; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    box-shadow: 0 4px 24px rgba(14,154,167,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(14,154,167,0.45); }
+  .btn-outline {
+    padding: 0.8rem 2rem; border-radius: 8px;
+    background: transparent; color: var(--muted);
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+    border: 1px solid rgba(139,170,191,0.3); cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-outline:hover { color: var(--white); border-color: var(--muted); }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 1px; background: rgba(14,154,167,0.1);
+    border-top: 1px solid rgba(14,154,167,0.1);
+    border-bottom: 1px solid rgba(14,154,167,0.1);
+  }
+  .stat {
+    padding: 2rem; text-align: center;
+    background: rgba(13,33,55,0.6);
+    transition: background 0.3s;
+  }
+  .stat:hover { background: rgba(14,154,167,0.08); }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem; font-weight: 800; color: var(--teal);
+    display: block;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 4rem; max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block;
+    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 0.8rem;
+  }
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700; line-height: 1.2;
+    margin-bottom: 3rem;
+  }
+  h2 .dim { color: var(--muted); font-weight: 400; }
+
+  /* ── EXPERIENCE CARDS ── */
+  .exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .exp-card {
+    background: var(--card); border: 1px solid rgba(14,154,167,0.1);
+    border-radius: 14px; padding: 2rem 2.2rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    cursor: default;
+  }
+  .exp-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: linear-gradient(to bottom, var(--teal), var(--accent));
+    border-radius: 3px 0 0 3px;
+  }
+  .exp-card:hover {
+    transform: translateX(6px);
+    box-shadow: 0 8px 40px rgba(14,154,167,0.12);
+    border-color: rgba(14,154,167,0.3);
+  }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; }
+  .exp-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+  .exp-dates { font-size: 0.78rem; color: var(--teal); letter-spacing: 0.04em; padding: 0.2rem 0.7rem; background: rgba(14,154,167,0.1); border-radius: 100px; }
+  .exp-company { font-size: 0.88rem; color: var(--muted); margin-top: 0.3rem; margin-bottom: 1rem; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .exp-bullets li { font-size: 0.9rem; color: #9ab5cc; line-height: 1.6; padding-left: 1.2rem; position: relative; }
+  .exp-bullets li::before { content: '◆'; position: absolute; left: 0; color: var(--teal); font-size: 0.55rem; top: 0.35rem; }
+
+  /* ── SKILLS GRID ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1.2rem; }
+  .skill-card {
+    background: var(--card); border: 1px solid rgba(14,154,167,0.1);
+    border-radius: 12px; padding: 1.6rem;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(14,154,167,0.15); }
+  .skill-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .skill-cat { font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--teal); margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .skill-items { font-size: 0.85rem; color: var(--muted); line-height: 1.8; }
+
+  /* ── CERTS ── */
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.2rem; }
+  .cert-card {
+    background: var(--card); border: 1px solid rgba(14,154,167,0.12);
+    border-radius: 12px; padding: 1.6rem 1.8rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .cert-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(14,154,167,0.15); }
+  .cert-card.new { border-color: rgba(14,154,167,0.4); background: rgba(14,154,167,0.07); }
+  .cert-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .cert-name { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem; }
+  .cert-issuer { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.2rem; }
+  .cert-year { font-size: 0.75rem; color: var(--teal); }
+  .cert-new-badge {
+    display: inline-block; margin-top: 0.4rem;
+    font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+    background: var(--teal); color: var(--dark); padding: 0.15rem 0.5rem; border-radius: 100px; font-weight: 700;
+  }
+
+  /* ── CONTACT ── */
+  .contact-wrap {
+    background: linear-gradient(135deg, var(--card) 0%, rgba(27,108,168,0.15) 100%);
+    border: 1px solid rgba(14,154,167,0.2);
+    border-radius: 20px; padding: 4rem; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .contact-wrap::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(14,154,167,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .contact-wrap h2 { margin-bottom: 1rem; }
+  .contact-sub { color: var(--muted); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.7rem 1.4rem; border-radius: 8px;
+    background: rgba(14,154,167,0.1); border: 1px solid rgba(14,154,167,0.25);
+    color: var(--teal); text-decoration: none; font-size: 0.88rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .contact-link:hover { background: rgba(14,154,167,0.2); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center; padding: 2rem;
+    border-top: 1px solid rgba(14,154,167,0.1);
+    color: var(--muted); font-size: 0.8rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; gap: 60px; }
-    .hero-right { justify-content: flex-start; }
-    .hero-card { width: 100%; }
-    .exp-item { grid-template-columns: 1fr; gap: 12px; }
-    .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
-    footer { flex-direction: column; gap: 12px; text-align: center; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .stats-bar { grid-template-columns: repeat(2,1fr); }
+    .contact-wrap { padding: 2.5rem 1.5rem; }
   }
 </style>
 </head>
 <body>
 
-<section class="hero" style="border-bottom:1px solid var(--border)">
-  <div class="hero-text">
-    <p class="hero-eyebrow">Portfolio · Technical Support & Community Operations</p>
-    <h1 class="hero-name">Olalekan<br><em>Lucas</em></h1>
-    <p class="hero-title">ALX Certified VA · HubSpot & Zendesk · Community Operations</p>
-    <p class="hero-bio">Technical Support and Community Operations Specialist with 3+ years scaling user trust for global digital platforms. ALX-certified, technically fluent, and proven at driving retention through data-driven engagement — available immediately for remote roles.</p>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">OL<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Available for Remote Work · EST / PST</div>
+    <h1>
+      <span class="name-dim">Hi, I'm</span>
+      <span class="name-teal">Olalekan</span><span class="name-lucas">Lucas</span>
+    </h1>
+    <p class="hero-sub">
+      Technical Support & Community Operations Specialist with 3+ years scaling user trust for global digital platforms. ALX-certified VA with deep expertise in Zendesk, HubSpot, and high-volume support operations.
+    </p>
+    <div class="hero-badges">
+      <span class="badge">Zendesk</span>
+      <span class="badge">HubSpot CRM</span>
+      <span class="badge">Community Moderation</span>
+      <span class="badge">SLA Compliance</span>
+      <span class="badge">Web3 / Blockchain</span>
+      <span class="badge">Trust & Safety</span>
+    </div>
     <div class="hero-cta">
-      <a href="mailto:lucasfarmpeneur@gmail.com" class="btn-primary">Get in Touch</a>
-      <a href="#skills" class="btn-ghost">View Skills</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-card">
-      <div class="stat-item"><div class="stat-num">3+</div><div class="stat-label">Years of Experience</div></div>
-      <div class="stat-item"><div class="stat-num">200%</div><div class="stat-label">MAU Retention Improvement</div></div>
-      <div class="stat-item"><div class="stat-num">400+</div><div class="stat-label">Daily Support Interactions</div></div>
-      <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">SLA Compliance Rate</div></div>
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <a href="#experience" class="btn-outline">View Experience ↓</a>
     </div>
   </div>
 </section>
 
-<section id="skills">
-  <p class="section-label">Core Competencies</p>
-  <h2 class="section-title">What I Bring<br>to the Table</h2>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-icon">🛠️</div>
-      <div class="skill-name">Technical Support</div>
-      <div class="skill-desc">Handling API-related queries, platform bug reporting, escalation workflows, and structured technical troubleshooting with precision and care.</div>
-      <div class="skill-tags"><span class="tag">API Query Handling</span><span class="tag">Bug Reporting</span><span class="tag">Escalation Mgmt</span><span class="tag">SLA Compliance</span></div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🛡️</div>
-      <div class="skill-name">Community Operations</div>
-      <div class="skill-desc">Running high-engagement programs — Discord AMAs, webinars, live competitions — that delivered a 200% monthly active user retention improvement at BIGO Technology.</div>
-      <div class="skill-tags"><span class="tag">Community Moderation</span><span class="tag">User Onboarding</span><span class="tag">Trust & Safety</span><span class="tag">Engagement</span></div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">⚙️</div>
-      <div class="skill-name">CRM & Ticketing</div>
-      <div class="skill-desc">Deep expertise in Zendesk and HubSpot — from queue management and macros to pipeline tracking and actionable reporting for product and leadership teams.</div>
-      <div class="skill-tags"><span class="tag">HubSpot CRM</span><span class="tag">Zendesk</span><span class="tag">MS Outlook</span><span class="tag">Reporting</span></div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">📋</div>
-      <div class="skill-name">Virtual Assistance</div>
-      <div class="skill-desc">ALX-certified VA providing executive-level remote support — scheduling, inbox management, data entry, research, and cross-functional workflow coordination.</div>
-      <div class="skill-tags"><span class="tag">ALX Certified</span><span class="tag">Calendar Mgmt</span><span class="tag">Data Entry</span><span class="tag">Remote-First</span></div>
-    </div>
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat reveal">
+    <span class="stat-num">3+</span>
+    <span class="stat-label">Years Experience</span>
   </div>
-</section>
+  <div class="stat reveal">
+    <span class="stat-num">400+</span>
+    <span class="stat-label">Daily Interactions</span>
+  </div>
+  <div class="stat reveal">
+    <span class="stat-num">200%</span>
+    <span class="stat-label">Retention Uplift</span>
+  </div>
+  <div class="stat reveal">
+    <span class="stat-num">100%</span>
+    <span class="stat-label">SLA Compliance</span>
+  </div>
+</div>
 
+<!-- EXPERIENCE -->
 <section id="experience">
-  <p class="section-label">Professional Background</p>
-  <h2 class="section-title">Experience</h2>
+  <span class="section-tag reveal">Work History</span>
+  <h2 class="reveal">Professional <span class="dim">Experience</span></h2>
   <div class="exp-list">
 
-    <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-year">Jan 2021 — Mar 2024</div>
-        <div class="exp-company">BIGO Technology Pte Ltd · Africa Region</div>
+    <div class="exp-card reveal">
+      <div class="exp-header">
+        <div>
+          <div class="exp-title">Community Manager & Support Specialist</div>
+          <div class="exp-company">BIGO Technology Pte Ltd · Africa Region</div>
+        </div>
+        <span class="exp-dates">Jan 2021 – Mar 2024</span>
       </div>
-      <div>
-        <div class="exp-role">Community Manager & Support Specialist</div>
-        <p class="exp-desc">Led community operations and technical support for one of the world's largest live-streaming platforms, managing the entire Africa region at scale.</p>
-        <ul class="exp-bullets">
-          <li>Organized Discord AMAs, webinars, and live-streamed competitions driving a <span class="highlight">200% improvement in monthly active user retention</span> — highest-impact program during tenure</li>
-          <li>Managed <span class="highlight">400+ daily support interactions</span>, resolving API queries and platform bugs with <span class="highlight">100% SLA compliance</span></li>
-          <li>Handled complex escalations via Zendesk and Slack with detailed root-cause documentation shared with Trust & Safety and Product teams</li>
-          <li>Tracked recurring user pain points in HubSpot, generating insights that directly shaped product decisions and platform safety improvements</li>
-          <li>Authored weekly community health reports covering ticket resolution, engagement trends, and platform sentiment for regional leadership</li>
-        </ul>
-      </div>
+      <ul class="exp-bullets">
+        <li>Led Discord AMAs, webinars & live-streamed competitions that drove a <strong>200% improvement</strong> in monthly active user retention across Africa — the highest-impact community program during tenure.</li>
+        <li>Managed <strong>400+ daily support interactions</strong>, resolving API-related queries and platform bugs while maintaining <strong>100% SLA compliance</strong>.</li>
+        <li>Handled complex escalations via Zendesk & Slack with structured troubleshooting frameworks and detailed root-cause documentation for trust-and-safety teams.</li>
+        <li>Tracked recurring pain points in HubSpot, generating actionable insights that directly shaped product decisions and safety improvements.</li>
+        <li>Authored weekly community health reports on ticket resolution rates, engagement trends, and platform sentiment for regional leadership.</li>
+      </ul>
     </div>
 
-    <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-year">Mar 2020 — Aug 2020</div>
-        <div class="exp-company">Modega Farm</div>
+    <div class="exp-card reveal">
+      <div class="exp-header">
+        <div>
+          <div class="exp-title">Data Management Assistant</div>
+          <div class="exp-company">Modega Farm</div>
+        </div>
+        <span class="exp-dates">Mar – Aug 2020</span>
       </div>
-      <div>
-        <div class="exp-role">Data Management Assistant</div>
-        <p class="exp-desc">Managed operational data supporting order processing and customer records.</p>
-        <ul class="exp-bullets">
-          <li>Maintained data entry and records using Microsoft Excel and Outlook</li>
-          <li>Compiled operational reports that improved inventory accuracy and processing efficiency</li>
-        </ul>
-      </div>
+      <ul class="exp-bullets">
+        <li>Managed data entry and record-keeping for order processing and customer information using Excel and Outlook.</li>
+        <li>Compiled operational reports that identified trends, improving inventory accuracy and processing efficiency.</li>
+      </ul>
     </div>
 
-    <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-year">Jan 2015 — Dec 2016</div>
-        <div class="exp-company">Armenia Global Furniture</div>
+    <div class="exp-card reveal">
+      <div class="exp-header">
+        <div>
+          <div class="exp-title">Customer Service Representative</div>
+          <div class="exp-company">Armenia Global Furniture</div>
+        </div>
+        <span class="exp-dates">Jan 2015 – Dec 2016</span>
       </div>
-      <div>
-        <div class="exp-role">Customer Service Representative</div>
-        <p class="exp-desc">Delivered front-line customer support via phone and in-person channels.</p>
-        <ul class="exp-bullets">
-          <li>Consistently achieved high customer satisfaction scores across all support interactions</li>
-          <li>Reduced repeat escalations through structured follow-up communication</li>
-          <li>Maintained accurate CRM records and streamlined documentation practices</li>
-        </ul>
-      </div>
+      <ul class="exp-bullets">
+        <li>Delivered front-line customer support via phone and in-person channels with consistently high satisfaction scores.</li>
+        <li>Resolved product and service complaints proactively, reducing repeat escalations through structured follow-up.</li>
+        <li>Maintained accurate CRM records and streamlined documentation across the customer service team.</li>
+      </ul>
     </div>
 
   </div>
 </section>
 
-<section id="education">
-  <p class="section-label">Credentials</p>
-  <h2 class="section-title">Certification</h2>
-  <div class="edu-grid">
-    <div class="edu-card">
-      <div class="edu-degree">Virtual Assistant Certification</div>
-      <div class="edu-school">ALX Africa</div>
-      <div class="edu-year">2022</div>
+<!-- SKILLS -->
+<section id="skills">
+  <span class="section-tag reveal">What I Bring</span>
+  <h2 class="reveal">Skills & <span class="dim">Expertise</span></h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-icon">🎫</div>
+      <div class="skill-cat">CRM & Ticketing</div>
+      <div class="skill-items">Zendesk · HubSpot CRM · MS Outlook</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🛠️</div>
+      <div class="skill-cat">Support Operations</div>
+      <div class="skill-items">Technical Troubleshooting · API Query Handling · Bug Reporting · SLA Compliance · Escalation Management</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🌐</div>
+      <div class="skill-cat">Community</div>
+      <div class="skill-items">Community Moderation · User Onboarding · Engagement Ops · Trust & Safety · Discord · Slack</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📊</div>
+      <div class="skill-cat">Data & Reporting</div>
+      <div class="skill-items">Community Health Metrics · Data Reporting · Cross-functional Insights · Microsoft Excel</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🤝</div>
+      <div class="skill-cat">Collaboration</div>
+      <div class="skill-items">Slack · Remote-first Workflows · Microsoft Teams · Cross-timezone Operations</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">⛓️</div>
+      <div class="skill-cat">Blockchain / Web3</div>
+      <div class="skill-items">Foundational Blockchain Knowledge · Web3 Fundamentals · DeFi Awareness · Bitget Certified</div>
     </div>
   </div>
 </section>
 
-<section id="contact" style="border-bottom:none">
-  <div class="contact-wrap">
-    <div>
-      <p class="section-label">Let's Connect</p>
-      <h2 class="contact-title">Open to<br><em>Remote</em><br>Globally</h2>
-      <p class="contact-body">Available immediately for full-time or contract remote roles in technical support, community operations, and virtual assistance. Comfortable with EST / PST time zones.</p>
-    </div>
-    <div class="contact-links">
-      <a href="mailto:lucasfarmpeneur@gmail.com" class="contact-link">
-        <span class="contact-link-icon">✉️</span>
-        <div class="contact-link-info"><div class="contact-link-label">Email</div><div class="contact-link-value">lucasfarmpeneur@gmail.com</div></div>
-        <span class="contact-link-arrow">→</span>
-      </a>
-      <a href="https://www.linkedin.com/in/olalekan-lucas-a96412248" target="_blank" class="contact-link">
-        <span class="contact-link-icon">💼</span>
-        <div class="contact-link-info"><div class="contact-link-label">LinkedIn</div><div class="contact-link-value">linkedin.com/in/olalekan-lucas-a96412248</div></div>
-        <span class="contact-link-arrow">→</span>
-      </a>
-      <div class="contact-link" style="cursor:default">
-        <span class="contact-link-icon">🌍</span>
-        <div class="contact-link-info"><div class="contact-link-label">Availability</div><div class="contact-link-value">Remote · Global · EST / PST · Immediate Start</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-name">Olalekan Lucas</div>
-  <div class="footer-copy">© 2026 · Technical Support & Community Operations Specialist</div>
-</footer>
-
-</body>
-</html>
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <span class="section-tag reveal">Credentials</span>
+  <h2 class="reveal">Edu
