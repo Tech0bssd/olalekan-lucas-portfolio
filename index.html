@@ -1,650 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Olalekan Lucas — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olalekan Lucas | People and Team Operations</title>
+<meta name="description" content="People-centered operations specialist. Hiring, onboarding, SOPs and support for remote teams across time zones.">
+<meta property="og:title" content="Olalekan Lucas | People and Team Operations">
+<meta property="og:description" content="Hiring, onboarding, SOPs and support for remote teams across time zones.">
+<meta name="theme-color" content="#16223B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316223B'/%3E%3Ctext x='32' y='43' font-size='30' font-family='Arial' font-weight='800' text-anchor='middle' fill='%23F4B740'%3EOL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --navy:    #0D2137;
-    --navy2:   #112843;
-    --accent:  #1B6CA8;
-    --teal:    #0E9AA7;
-    --teal2:   #0cc5d4;
-    --white:   #FFFFFF;
-    --off:     #F0F6FF;
-    --muted:   #8BAABF;
-    --dark:    #071526;
-    --card:    #132d47;
-    --glow:    rgba(14,154,167,0.18);
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root{
+  --paper:#F2F4F7;
+  --ink:#16223B;
+  --ink-soft:#4A5670;
+  --line:#D5DAE3;
+  --teal:#137A6E;
+  --sun:#F4B740;
+  --white:#FFFFFF;
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --body:'Instrument Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
 
-  html { scroll-behavior: smooth; }
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--white);padding:10px 16px;border-radius:8px;z-index:20}
+.skip:focus{left:12px}
 
-  body {
-    background: var(--navy);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-  }
+/* nav */
+.navbar{position:sticky;top:0;z-index:10;background:rgba(242,244,247,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+.logo{font-family:var(--display);font-weight:800;font-size:1.35rem;text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--teal)}
+nav ul{display:flex;gap:26px;list-style:none;font-size:.95rem;font-weight:500;align-items:center}
+nav a{text-decoration:none;color:var(--ink-soft);padding:4px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+nav a:hover{color:var(--ink);border-color:var(--sun)}
+nav a.cta{color:var(--white);background:var(--ink);padding:8px 18px;border-radius:999px;border:0}
+nav a.cta:hover{background:var(--teal);color:var(--white)}
 
-  /* ── NOISE TEXTURE OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 0; opacity: 0.4;
-  }
+/* hero */
+.hero{padding:76px 0 24px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(3rem,9vw,6.4rem);line-height:.95;letter-spacing:-.04em;max-width:12ch}
+.hero .lede{margin-top:28px;max-width:58ch;font-size:1.22rem;color:var(--ink-soft)}
+.hero .lede strong{color:var(--ink);font-weight:600}
+.actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;font-weight:600;text-decoration:none;font-size:1rem;border:2px solid var(--ink);transition:background .15s,color .15s,border-color .15s}
+.btn.primary{background:var(--ink);color:var(--white)}
+.btn.primary:hover{background:var(--teal);border-color:var(--teal)}
+.btn.ghost:hover{background:var(--white)}
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.2rem 4rem;
-    background: rgba(13,33,55,0.85);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(14,154,167,0.15);
-  }
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800; font-size: 1.2rem; letter-spacing: 0.06em;
-    color: var(--white);
-  }
-  .nav-logo span { color: var(--teal); }
-  .nav-links { display: flex; gap: 2.4rem; list-style: none; }
-  .nav-links a {
-    color: var(--muted); text-decoration: none;
-    font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
-    transition: color 0.25s;
-  }
-  .nav-links a:hover { color: var(--teal); }
+/* overlap chart: the one memorable element */
+.overlap{margin-top:64px;background:var(--ink);color:var(--white);border-radius:22px;padding:30px 30px 26px}
+.overlap-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px 24px;margin-bottom:24px}
+.overlap-head h2{font-family:var(--display);font-size:1.3rem;font-weight:700;letter-spacing:-.01em}
+.overlap-head p{color:#AEB8CE;font-size:.95rem;max-width:46ch}
+.rows{display:grid;gap:14px}
+.row{display:grid;grid-template-columns:170px 1fr;gap:18px;align-items:center}
+.who .city{font-size:.95rem;font-weight:600}
+.who .meta{font-size:.82rem;color:#AEB8CE;font-variant-numeric:tabular-nums}
+.who .meta b{color:var(--white);font-weight:600;font-size:.95rem}
+.track{position:relative;height:30px;background:#232F4D;border-radius:8px;overflow:hidden}
+.band{position:absolute;top:0;bottom:0;background:#4B5F8C;border-radius:6px;transform-origin:left;transform:scaleX(0);animation:grow .9s cubic-bezier(.2,.7,.2,1) forwards}
+.row.home .band{background:var(--sun)}
+.mine{position:absolute;top:0;bottom:0;border-left:2px dashed rgba(244,183,64,.9);border-right:2px dashed rgba(244,183,64,.9);pointer-events:none;background:rgba(244,183,64,.08)}
+.nowline{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--white);z-index:2}
+@keyframes grow{to{transform:scaleX(1)}}
+.axis{display:grid;grid-template-columns:170px 1fr;gap:18px;margin-top:10px}
+.ticks{position:relative;height:18px;font-size:.78rem;color:#AEB8CE}
+.ticks span{position:absolute;transform:translateX(-50%)}
+.ticks span:first-child{transform:none}
+.ticks span:last-child{transform:translateX(-100%)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:18px;font-size:.85rem;color:#AEB8CE}
+.legend i{display:inline-block;width:14px;height:10px;border-radius:3px;margin-right:7px;vertical-align:baseline}
 
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    padding: 8rem 4rem 4rem;
-    position: relative; overflow: hidden;
-  }
+/* sections */
+section{padding:88px 0 0}
+.sec-head{display:grid;grid-template-columns:220px 1fr;gap:24px;margin-bottom:38px}
+.sec-head h2{font-family:var(--display);font-weight:800;font-size:2rem;letter-spacing:-.025em;line-height:1.1}
+.sec-head p{color:var(--ink-soft);max-width:56ch}
 
-  /* animated grid background */
-  .hero::after {
-    content: '';
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(14,154,167,0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(14,154,167,0.06) 1px, transparent 1px);
-    background-size: 60px 60px;
-    animation: gridPan 20s linear infinite;
-    pointer-events: none;
-  }
-  @keyframes gridPan { from { transform: translateY(0); } to { transform: translateY(60px); } }
+/* results */
+.result{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:26px 0;border-top:1px solid var(--line)}
+.result:last-child{border-bottom:1px solid var(--line)}
+.result b{font-family:var(--display);font-weight:800;font-size:3.2rem;line-height:1;letter-spacing:-.04em;color:var(--teal)}
+.result h3{font-family:var(--display);font-size:1.2rem;font-weight:700;margin-bottom:6px}
+.result p{color:var(--ink-soft);max-width:60ch}
 
-  /* glowing orbs */
-  .orb {
-    position: absolute; border-radius: 50%;
-    filter: blur(80px); pointer-events: none; animation: float 8s ease-in-out infinite;
-  }
-  .orb1 { width: 500px; height: 500px; background: rgba(27,108,168,0.18); top: -100px; right: -80px; animation-delay: 0s; }
-  .orb2 { width: 350px; height: 350px; background: rgba(14,154,167,0.14); bottom: 0; left: -60px; animation-delay: 3s; }
-  @keyframes float {
-    0%,100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-30px) scale(1.05); }
-  }
+/* timeline */
+.timeline{list-style:none;border-left:3px solid var(--ink);margin-left:6px}
+.job{position:relative;padding:0 0 46px 34px}
+.job::before{content:"";position:absolute;left:-11px;top:6px;width:19px;height:19px;background:var(--paper);border:3px solid var(--ink);border-radius:50%}
+.job.main::before{background:var(--sun)}
+.job h3{font-family:var(--display);font-size:1.45rem;font-weight:700;letter-spacing:-.015em;line-height:1.2}
+.job .where{margin-top:4px;color:var(--ink-soft);font-weight:500}
+.job .when{display:inline-block;margin-top:10px;font-size:.88rem;font-weight:600;background:var(--white);border:1px solid var(--line);border-radius:999px;padding:3px 12px}
+.job ul{margin-top:18px;padding-left:20px;max-width:68ch}
+.job li{margin-bottom:10px}
+.job li::marker{color:var(--teal)}
+.job.small ul{margin-top:12px}
 
-  .hero-inner { max-width: 760px; position: relative; z-index: 1; }
+/* approach */
+.approach{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px 48px}
+.approach h3{font-family:var(--display);font-size:1.3rem;font-weight:700;letter-spacing:-.015em;margin-bottom:8px;padding-left:14px;border-left:4px solid var(--sun)}
+.approach p{color:var(--ink-soft);max-width:44ch}
 
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(14,154,167,0.12); border: 1px solid rgba(14,154,167,0.3);
-    border-radius: 100px; padding: 0.4rem 1rem;
-    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--teal); margin-bottom: 1.8rem;
-    animation: fadeUp 0.8s ease both;
-  }
-  .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--teal); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:36px 48px}
+.skills h3{font-family:var(--display);font-size:1.15rem;font-weight:700;padding-bottom:10px;border-bottom:2px solid var(--line);margin-bottom:12px}
+.skills ul{list-style:none}
+.skills li{padding:5px 0;color:var(--ink-soft)}
 
-  h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(3rem, 7vw, 5.2rem);
-    font-weight: 800; line-height: 1.1;
-    animation: fadeUp 0.8s 0.15s ease both;
-  }
-  h1 .name-dim {
-    color: var(--muted); font-weight: 300;
-    font-size: clamp(0.85rem, 1.6vw, 1.1rem);
-    font-family: 'DM Sans', sans-serif;
-    display: block; margin-bottom: 0.5rem;
-    letter-spacing: 0.18em; text-transform: uppercase;
-  }
-  h1 .name-teal {
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 900;
-    font-size: clamp(2.8rem, 6.5vw, 5.2rem);
-    letter-spacing: -0.03em;
-    display: inline-block;
-  }
-  h1 .name-teal .bounce-letter {
-    background: linear-gradient(135deg, #0cc5d4 0%, #0E9AA7 50%, #1B6CA8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    filter: drop-shadow(0 0 18px rgba(14,154,167,0.5));
-  }
-  h1 .name-lucas {
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 700;
-    font-size: clamp(2.8rem, 6.5vw, 5.2rem);
-    color: var(--white);
-    letter-spacing: -0.03em;
-    display: inline-block;
-    margin-left: 0.3em;
-  }
+/* education */
+.edu{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px 40px}
+.edu h3{font-family:var(--display);font-size:1.1rem;font-weight:700;line-height:1.3}
+.edu p{color:var(--ink-soft);font-size:.98rem;margin-top:4px}
 
-  .hero-sub {
-    margin-top: 1.4rem;
-    font-size: 1.15rem; color: var(--muted); line-height: 1.7;
-    max-width: 580px;
-    animation: fadeUp 0.8s 0.3s ease both;
-  }
+/* contact */
+section.contact{margin-top:88px;background:var(--sun);border-radius:24px;padding:52px 44px}
+.contact h2{font-family:var(--display);font-weight:800;font-size:clamp(1.9rem,4.5vw,3rem);letter-spacing:-.03em;line-height:1.05;max-width:18ch}
+.contact p{margin-top:16px;max-width:52ch}
+.contact .links{margin-top:26px;display:flex;flex-wrap:wrap;gap:14px}
+.contact .btn.primary:hover{background:var(--white);color:var(--ink);border-color:var(--ink)}
+.contact .btn.ghost:hover{background:var(--ink);color:var(--white)}
 
-  .hero-badges {
-    display: flex; flex-wrap: wrap; gap: 0.7rem;
-    margin-top: 2rem;
-    animation: fadeUp 0.8s 0.45s ease both;
-  }
-  .badge {
-    padding: 0.35rem 0.9rem; border-radius: 6px;
-    font-size: 0.78rem; font-weight: 500; letter-spacing: 0.04em;
-    border: 1px solid rgba(14,154,167,0.3); color: var(--teal);
-    background: rgba(14,154,167,0.08);
-  }
+footer{padding:36px 0 48px;color:var(--ink-soft);font-size:.92rem}
 
-  .hero-cta {
-    display: flex; gap: 1rem; margin-top: 2.6rem; flex-wrap: wrap;
-    animation: fadeUp 0.8s 0.55s ease both;
-  }
-  .btn-primary {
-    padding: 0.8rem 2rem; border-radius: 8px;
-    background: linear-gradient(135deg, var(--teal), var(--accent));
-    color: var(--white); font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem; font-weight: 500; border: none; cursor: pointer;
-    text-decoration: none; display: inline-block;
-    box-shadow: 0 4px 24px rgba(14,154,167,0.3);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(14,154,167,0.45); }
-  .btn-outline {
-    padding: 0.8rem 2rem; border-radius: 8px;
-    background: transparent; color: var(--muted);
-    font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-    border: 1px solid rgba(139,170,191,0.3); cursor: pointer;
-    text-decoration: none; display: inline-block;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .btn-outline:hover { color: var(--white); border-color: var(--muted); }
-
-  /* ── STATS BAR ── */
-  .stats-bar {
-    display: grid; grid-template-columns: repeat(4,1fr);
-    gap: 1px; background: rgba(14,154,167,0.1);
-    border-top: 1px solid rgba(14,154,167,0.1);
-    border-bottom: 1px solid rgba(14,154,167,0.1);
-  }
-  .stat {
-    padding: 2rem; text-align: center;
-    background: rgba(13,33,55,0.6);
-    transition: background 0.3s;
-  }
-  .stat:hover { background: rgba(14,154,167,0.08); }
-  .stat-num {
-    font-family: 'Syne', sans-serif;
-    font-size: 2.2rem; font-weight: 800; color: var(--teal);
-    display: block;
-  }
-  .stat-label { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
-
-  /* ── SECTIONS ── */
-  section { padding: 6rem 4rem; max-width: 1100px; margin: 0 auto; }
-  .section-tag {
-    display: inline-block;
-    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: var(--teal); margin-bottom: 0.8rem;
-  }
-  h2 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
-    font-weight: 700; line-height: 1.2;
-    margin-bottom: 3rem;
-  }
-  h2 .dim { color: var(--muted); font-weight: 400; }
-
-  /* ── EXPERIENCE CARDS ── */
-  .exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
-  .exp-card {
-    background: var(--card); border: 1px solid rgba(14,154,167,0.1);
-    border-radius: 14px; padding: 2rem 2.2rem;
-    position: relative; overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-    cursor: default;
-  }
-  .exp-card::before {
-    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-    width: 3px; background: linear-gradient(to bottom, var(--teal), var(--accent));
-    border-radius: 3px 0 0 3px;
-  }
-  .exp-card:hover {
-    transform: translateX(6px);
-    box-shadow: 0 8px 40px rgba(14,154,167,0.12);
-    border-color: rgba(14,154,167,0.3);
-  }
-  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; }
-  .exp-title { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
-  .exp-dates { font-size: 0.78rem; color: var(--teal); letter-spacing: 0.04em; padding: 0.2rem 0.7rem; background: rgba(14,154,167,0.1); border-radius: 100px; }
-  .exp-company { font-size: 0.88rem; color: var(--muted); margin-top: 0.3rem; margin-bottom: 1rem; }
-  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-  .exp-bullets li { font-size: 0.9rem; color: #9ab5cc; line-height: 1.6; padding-left: 1.2rem; position: relative; }
-  .exp-bullets li::before { content: '◆'; position: absolute; left: 0; color: var(--teal); font-size: 0.55rem; top: 0.35rem; }
-
-  /* ── SKILLS GRID ── */
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1.2rem; }
-  .skill-card {
-    background: var(--card); border: 1px solid rgba(14,154,167,0.1);
-    border-radius: 12px; padding: 1.6rem;
-    transition: transform 0.25s, box-shadow 0.25s;
-  }
-  .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(14,154,167,0.15); }
-  .skill-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
-  .skill-cat { font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--teal); margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 0.06em; }
-  .skill-items { font-size: 0.85rem; color: var(--muted); line-height: 1.8; }
-
-  /* ── CERTS ── */
-  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.2rem; }
-  .cert-card {
-    background: var(--card); border: 1px solid rgba(14,154,167,0.12);
-    border-radius: 12px; padding: 1.6rem 1.8rem;
-    display: flex; gap: 1rem; align-items: flex-start;
-    transition: transform 0.25s, box-shadow 0.25s;
-  }
-  .cert-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(14,154,167,0.15); }
-  .cert-card.new { border-color: rgba(14,154,167,0.4); background: rgba(14,154,167,0.07); }
-  .cert-icon { font-size: 1.8rem; flex-shrink: 0; }
-  .cert-name { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem; }
-  .cert-issuer { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.2rem; }
-  .cert-year { font-size: 0.75rem; color: var(--teal); }
-  .cert-new-badge {
-    display: inline-block; margin-top: 0.4rem;
-    font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
-    background: var(--teal); color: var(--dark); padding: 0.15rem 0.5rem; border-radius: 100px; font-weight: 700;
-  }
-
-  /* ── CONTACT ── */
-  .contact-wrap {
-    background: linear-gradient(135deg, var(--card) 0%, rgba(27,108,168,0.15) 100%);
-    border: 1px solid rgba(14,154,167,0.2);
-    border-radius: 20px; padding: 4rem; text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .contact-wrap::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at center, rgba(14,154,167,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .contact-wrap h2 { margin-bottom: 1rem; }
-  .contact-sub { color: var(--muted); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
-  .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-  .contact-link {
-    display: flex; align-items: center; gap: 0.5rem;
-    padding: 0.7rem 1.4rem; border-radius: 8px;
-    background: rgba(14,154,167,0.1); border: 1px solid rgba(14,154,167,0.25);
-    color: var(--teal); text-decoration: none; font-size: 0.88rem;
-    transition: background 0.2s, transform 0.2s;
-  }
-  .contact-link:hover { background: rgba(14,154,167,0.2); transform: translateY(-2px); }
-
-  /* ── FOOTER ── */
-  footer {
-    text-align: center; padding: 2rem;
-    border-top: 1px solid rgba(14,154,167,0.1);
-    color: var(--muted); font-size: 0.8rem;
-  }
-
-  /* ── LETTER SLAM ANIMATION ── */
-  .bounce-letter {
-    display: inline-block;
-    opacity: 0;
-    position: relative;
-  }
-  .space-letter { display: inline-block; width: 0.3em; }
-
-  @keyframes slamIn {
-    0%   { opacity: 0; transform: var(--start) scale(2.5) rotate(var(--rot)); filter: blur(8px); }
-    55%  { opacity: 1; transform: translate(0,0) scale(1.25) rotate(calc(var(--rot) * -0.3)); filter: blur(0); }
-    70%  { transform: translate(0,0) scale(0.88) rotate(2deg); }
-    82%  { transform: translate(0,0) scale(1.08) rotate(-1deg); }
-    91%  { transform: translate(0,0) scale(0.97) rotate(0.5deg); }
-    100% { opacity: 1; transform: translate(0,0) scale(1) rotate(0deg); filter: blur(0); }
-  }
-
-  @keyframes glowPulse {
-    0%   { text-shadow: 0 0 30px rgba(14,154,167,0.9), 0 0 60px rgba(14,154,167,0.6); }
-    100% { text-shadow: 0 0 0px transparent; }
-  }
-
-  .bounce-letter.slammed {
-    animation: glowPulse 0.8s ease-out forwards;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .reveal.visible { opacity: 1; transform: none; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    .hero { padding: 6rem 1.5rem 3rem; }
-    section { padding: 4rem 1.5rem; }
-    .stats-bar { grid-template-columns: repeat(2,1fr); }
-    .contact-wrap { padding: 2.5rem 1.5rem; }
-  }
+@media (max-width:760px){
+  nav ul{gap:14px;font-size:.88rem}
+  nav li.hide-sm{display:none}
+  .sec-head,.result{grid-template-columns:1fr;gap:10px}
+  .row,.axis{grid-template-columns:1fr;gap:6px}
+  .axis .spacer{display:none}
+  .overlap{padding:24px 20px}
+  section.contact{padding:34px 24px}
+  section{padding-top:64px}
+  .hero{padding-top:52px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .band{animation:none;transform:none}
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">OL<span>.</span></div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#certifications">Certifications</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+<a class="skip" href="#top">Skip to content</a>
+<div class="navbar"><div class="wrap">
+  <header class="nav">
+    <a class="logo" href="#top">OL<span>.</span></a>
+    <nav aria-label="Main">
+      <ul>
+        <li class="hide-sm"><a href="#results">Results</a></li>
+        <li class="hide-sm"><a href="#experience">Experience</a></li>
+        <li class="hide-sm"><a href="#approach">Approach</a></li>
+        <li class="hide-sm"><a href="#skills">Skills</a></li>
+        <li><a class="cta" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+</div></div>
 
-<!-- HERO -->
-<section class="hero" id="about">
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
-  <div class="hero-inner">
-    <div class="hero-tag">Available for Remote Work · EST / PST</div>
-    <h1>
-      <span class="name-dim">Hi, I'm</span>
-      <span class="name-teal" id="firstName"></span><span class="name-lucas" id="lastName"></span>
-    </h1>
-    <p class="hero-sub">
-      Technical Support & Community Operations Specialist with 3+ years scaling user trust for global digital platforms. ALX-certified VA with deep expertise in Zendesk, HubSpot, and high-volume support operations.
-    </p>
-    <div class="hero-badges">
-      <span class="badge">Zendesk</span>
-      <span class="badge">HubSpot CRM</span>
-      <span class="badge">Community Moderation</span>
-      <span class="badge">SLA Compliance</span>
-      <span class="badge">Web3 / Blockchain</span>
-      <span class="badge">Trust & Safety</span>
-    </div>
-    <div class="hero-cta">
-      <a href="#contact" class="btn-primary">Get in Touch</a>
-      <a href="#experience" class="btn-outline">View Experience ↓</a>
-    </div>
-  </div>
-</section>
+<div class="wrap">
+  <main id="top">
+    <div class="hero">
+      <h1>Olalekan Lucas</h1>
+      <p class="lede"><strong>People and team operations for remote teams.</strong> I hire, onboard, and support distributed teams, write the SOPs that keep them consistent, and turn day-to-day data into reports leaders can act on.</p>
+      <div class="actions">
+        <a class="btn primary" href="Olalekan_Lucas_Resume.pdf" download>Download resume</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat reveal">
-    <span class="stat-num">3+</span>
-    <span class="stat-label">Years Experience</span>
-  </div>
-  <div class="stat reveal">
-    <span class="stat-num">400+</span>
-    <span class="stat-label">Daily Interactions</span>
-  </div>
-  <div class="stat reveal">
-    <span class="stat-num">200%</span>
-    <span class="stat-label">Retention Uplift</span>
-  </div>
-  <div class="stat reveal">
-    <span class="stat-num">100%</span>
-    <span class="stat-label">SLA Compliance</span>
-  </div>
+      <div class="overlap" aria-label="Working hours overlap chart">
+        <div class="overlap-head">
+          <h2>Our working day, side by side</h2>
+          <p>Each bar is 9:00 to 17:00 in that city, drawn on my clock. The dashed frame is my day. The white line is now.</p>
+        </div>
+        <div class="rows" id="rows"></div>
+        <div class="axis"><div class="spacer"></div><div class="ticks" id="ticks"></div></div>
+        <div class="legend">
+          <span><i style="background:#F4B740"></i>My hours</span>
+          <span><i style="background:#4B5F8C"></i>Their hours</span>
+          <span id="tzNote"></span>
+        </div>
+      </div>
+    </div>
+
+    <section id="results">
+      <div class="sec-head">
+        <h2>Results</h2>
+        <p>What changed because of the work, from my time leading community operations at BIGO.</p>
+      </div>
+      <div>
+        <div class="result">
+          <b>200%</b>
+          <div>
+            <h3>Retention improvement</h3>
+            <p>Monthly active user retention rose through engagement programs tied to onboarding and relationship quality.</p>
+          </div>
+        </div>
+        <div class="result">
+          <b>100%</b>
+          <div>
+            <h3>SLA compliance</h3>
+            <p>Zero missed targets while directing 400+ daily interactions across Zendesk, Slack, email, and messaging channels.</p>
+          </div>
+        </div>
+        <div class="result">
+          <b>30%</b>
+          <div>
+            <h3>Faster resolution</h3>
+            <p>Average resolution time dropped after I refined workflows and documented them for the team.</p>
+          </div>
+        </div>
+        <div class="result">
+          <b>10</b>
+          <div>
+            <h3>People hired and led</h3>
+            <p>I ran hiring for moderators and hosting staff, then supervised the remote team of 10, including payroll changes and performance oversight.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="sec-head">
+        <h2>Experience</h2>
+        <p>Most recent first. The BIGO role is where most of my people operations work happened.</p>
+      </div>
+      <ol class="timeline">
+        <li class="job small">
+          <h3>Backend Operations Support (Contract)</h3>
+          <div class="where">DataUp, remote</div>
+          <span class="when">Apr 2025 to Dec 2025</span>
+          <ul>
+            <li>Monitored system uptime, troubleshot issues, and deployed updates independently with minimal oversight.</li>
+          </ul>
+        </li>
+        <li class="job main">
+          <h3>Community Operations Lead and Client Success Manager</h3>
+          <div class="where">BIGO Technology, global live-streaming platform (Africa Region), remote</div>
+          <span class="when">Jan 2021 to Mar 2023</span>
+          <ul>
+            <li>Supported and supervised a remote team of 10, owning payroll modifications, performance oversight, and daily staff administration.</li>
+            <li>Ran hiring end to end for moderators and hosting staff, from job posts and screening to interviews and offers. Brought on about 10 people.</li>
+            <li>Built onboarding workflows, SOPs, tutorials, and recorded trainings, with follow-ups and support packs to help new hires settle in and stay.</li>
+            <li>Kept 100% SLA compliance across 400+ daily interactions in Zendesk, Slack, email, and messaging channels.</li>
+            <li>Drove a 200% improvement in monthly active user retention through engagement programs tied to onboarding and relationship quality.</li>
+            <li>Owned escalations across trust and safety, engineering, and product, and kept regional leadership informed.</li>
+            <li>Wrote weekly performance dashboards on resolution speed, activation, and engagement.</li>
+            <li>Cut average resolution time by 30% by refining workflows and documentation.</li>
+          </ul>
+        </li>
+        <li class="job small">
+          <h3>Operations and Data Management Assistant</h3>
+          <div class="where">Modega Farm, remote</div>
+          <span class="when">Mar 2020 to Aug 2020</span>
+          <ul>
+            <li>Managed operational records and order workflows, and found bottlenecks that improved processing accuracy and speed.</li>
+          </ul>
+        </li>
+        <li class="job small">
+          <h3>Customer Service Representative</h3>
+          <div class="where">Armenia Global Furniture</div>
+          <span class="when">Jan 2015 to Dec 2016</span>
+          <ul>
+            <li>Gave front-line support in a high-volume environment and reduced repeat escalations through structured follow-up and accurate records.</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section id="approach">
+      <div class="sec-head">
+        <h2>How I work</h2>
+        <p>Three habits that carry across every team I have supported.</p>
+      </div>
+      <div class="approach">
+        <div>
+          <h3>Start with the person</h3>
+          <p>New hires stay when they feel settled. I pair training with follow-ups and support packs so nobody is left guessing in their first weeks.</p>
+        </div>
+        <div>
+          <h3>Write it down</h3>
+          <p>If a process lives in one person's head, it breaks. I turn it into an SOP, a tutorial, or a recorded training the whole team can use.</p>
+        </div>
+        <div>
+          <h3>Report what matters</h3>
+          <p>Weekly dashboards on resolution speed, activation, and engagement gave leadership numbers they could plan around.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="sec-head">
+        <h2>Skills</h2>
+        <p>What I use day to day.</p>
+      </div>
+      <div class="skills">
+        <div>
+          <h3>People operations</h3>
+          <ul>
+            <li>Recruitment coordination and interviewing</li>
+            <li>Onboarding and offboarding support</li>
+            <li>Payroll coordination and HR documentation</li>
+            <li>Performance oversight</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Process and reporting</h3>
+          <ul>
+            <li>SOP development</li>
+            <li>Process improvement</li>
+            <li>Performance dashboards and reporting</li>
+            <li>Escalation management</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Working with others</h3>
+          <ul>
+            <li>Remote team support</li>
+            <li>Cross-functional collaboration</li>
+            <li>Stakeholder management</li>
+            <li>Event and engagement coordination</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Tools</h3>
+          <ul>
+            <li>Google Workspace</li>
+            <li>HubSpot and Zendesk</li>
+            <li>Slack</li>
+            <li>Microsoft Excel and Outlook</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="sec-head">
+        <h2>Education and certifications</h2>
+        <p>Formal study plus practical training.</p>
+      </div>
+      <div class="edu">
+        <div><h3>B.Sc. Computer Science</h3><p>National Open University of Nigeria</p></div>
+        <div><h3>OND, Computer Science</h3><p>Kwara State Polytechnic</p></div>
+        <div><h3>HubSpot Service Hub Software</h3><p>HubSpot Academy, valid through Jun 2027</p></div>
+        <div><h3>ALX Virtual Assistant</h3><p>ALX Africa</p></div>
+        <div><h3>Datacom IT Support Job Simulation</h3><p>Forage</p></div>
+        <div><h3>Blockchain4Youth Learning Hub</h3><p>Bitget and Blockchain4Youth</p></div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Looking for someone to keep your remote team running well?</h2>
+      <p>I'm open to remote people operations, onboarding, and team enablement roles. Send a note and I'll reply within a day.</p>
+      <div class="links">
+        <a class="btn primary" href="mailto:lucasfarmpeneur@gmail.com">Email me</a>
+        <a class="btn ghost" href="https://linkedin.com/in/olalekanlucas" rel="noopener">View LinkedIn</a>
+        <a class="btn ghost" href="Olalekan_Lucas_Resume.pdf" download>Download resume</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Olalekan Lucas. Open to remote work worldwide.</p>
+  </footer>
 </div>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <span class="section-tag reveal">Work History</span>
-  <h2 class="reveal">Professional <span class="dim">Experience</span></h2>
-  <div class="exp-list">
-
-    <div class="exp-card reveal">
-      <div class="exp-header">
-        <div>
-          <div class="exp-title">Community Manager & Support Specialist</div>
-          <div class="exp-company">BIGO Technology Pte Ltd · Africa Region</div>
-        </div>
-        <span class="exp-dates">Jan 2021 – Mar 2024</span>
-      </div>
-      <ul class="exp-bullets">
-        <li>Led Discord AMAs, webinars & live-streamed competitions that drove a <strong>200% improvement</strong> in monthly active user retention across Africa — the highest-impact community program during tenure.</li>
-        <li>Managed <strong>400+ daily support interactions</strong>, resolving API-related queries and platform bugs while maintaining <strong>100% SLA compliance</strong>.</li>
-        <li>Handled complex escalations via Zendesk & Slack with structured troubleshooting frameworks and detailed root-cause documentation for trust-and-safety teams.</li>
-        <li>Tracked recurring pain points in HubSpot, generating actionable insights that directly shaped product decisions and safety improvements.</li>
-        <li>Authored weekly community health reports on ticket resolution rates, engagement trends, and platform sentiment for regional leadership.</li>
-      </ul>
-    </div>
-
-    <div class="exp-card reveal">
-      <div class="exp-header">
-        <div>
-          <div class="exp-title">Data Management Assistant</div>
-          <div class="exp-company">Modega Farm</div>
-        </div>
-        <span class="exp-dates">Mar – Aug 2020</span>
-      </div>
-      <ul class="exp-bullets">
-        <li>Managed data entry and record-keeping for order processing and customer information using Excel and Outlook.</li>
-        <li>Compiled operational reports that identified trends, improving inventory accuracy and processing efficiency.</li>
-      </ul>
-    </div>
-
-    <div class="exp-card reveal">
-      <div class="exp-header">
-        <div>
-          <div class="exp-title">Customer Service Representative</div>
-          <div class="exp-company">Armenia Global Furniture</div>
-        </div>
-        <span class="exp-dates">Jan 2015 – Dec 2016</span>
-      </div>
-      <ul class="exp-bullets">
-        <li>Delivered front-line customer support via phone and in-person channels with consistently high satisfaction scores.</li>
-        <li>Resolved product and service complaints proactively, reducing repeat escalations through structured follow-up.</li>
-        <li>Maintained accurate CRM records and streamlined documentation across the customer service team.</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <span class="section-tag reveal">What I Bring</span>
-  <h2 class="reveal">Skills & <span class="dim">Expertise</span></h2>
-  <div class="skills-grid">
-    <div class="skill-card reveal">
-      <div class="skill-icon">🎫</div>
-      <div class="skill-cat">CRM & Ticketing</div>
-      <div class="skill-items">Zendesk · HubSpot CRM · MS Outlook</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🛠️</div>
-      <div class="skill-cat">Support Operations</div>
-      <div class="skill-items">Technical Troubleshooting · API Query Handling · Bug Reporting · SLA Compliance · Escalation Management</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🌐</div>
-      <div class="skill-cat">Community</div>
-      <div class="skill-items">Community Moderation · User Onboarding · Engagement Ops · Trust & Safety · Discord · Slack</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">📊</div>
-      <div class="skill-cat">Data & Reporting</div>
-      <div class="skill-items">Community Health Metrics · Data Reporting · Cross-functional Insights · Microsoft Excel</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🤝</div>
-      <div class="skill-cat">Collaboration</div>
-      <div class="skill-items">Slack · Remote-first Workflows · Microsoft Teams · Cross-timezone Operations</div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">⛓️</div>
-      <div class="skill-cat">Blockchain / Web3</div>
-      <div class="skill-items">Foundational Blockchain Knowledge · Web3 Fundamentals · DeFi Awareness · Bitget Certified</div>
-    </div>
-  </div>
-</section>
-
-<!-- CERTIFICATIONS -->
-<section id="certifications">
-  <span class="section-tag reveal">Credentials</span>
-  <h2 class="reveal">Education & <span class="dim">Certifications</span></h2>
-  <div class="certs-grid">
-    <div class="cert-card reveal">
-      <div class="cert-icon">🎓</div>
-      <div>
-        <div class="cert-name">B.Sc. Computer Science</div>
-        <div class="cert-issuer">National Open University of Nigeria</div>
-        <div class="cert-year">2020 – 2024</div>
-      </div>
-    </div>
-    <div class="cert-card reveal">
-      <div class="cert-icon">📘</div>
-      <div>
-        <div class="cert-name">OND, Computer Science</div>
-        <div class="cert-issuer">Kwara State Polytechnic</div>
-        <div class="cert-year">2015 – 2017</div>
-      </div>
-    </div>
-    <div class="cert-card reveal">
-      <div class="cert-icon">🏅</div>
-      <div>
-        <div class="cert-name">ALX Virtual Assistant Certification</div>
-        <div class="cert-issuer">ALX Africa</div>
-        <div class="cert-year">2022</div>
-      </div>
-    </div>
-    <div class="cert-card new reveal">
-      <div class="cert-icon">⛓️</div>
-      <div>
-        <div class="cert-name">Blockchain4Youth Learning Hub</div>
-        <div class="cert-issuer">Bitget × Blockchain4Youth</div>
-        <div class="cert-year">2026 · ID: B4Y-2026-000727</div>
-        <span class="cert-new-badge">New ✦</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-wrap reveal">
-    <span class="section-tag">Let's Connect</span>
-    <h2>Open to <span class="dim">Opportunities</span></h2>
-    <p class="contact-sub">Available for remote Customer Support, Community Moderation, and VA roles globally. Ready to start immediately — EST / PST time zones.</p>
-    <div class="contact-links">
-      <a href="mailto:lucasfarmpeneur@gmail.com" class="contact-link">
-        📧 lucasfarmpeneur@gmail.com
-      </a>
-      <a href="tel:+2349114860856" class="contact-link">
-        📞 +234 911 486 0856
-      </a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>© 2026 Olalekan Lucas · Built with purpose · Open to Remote Globally</p>
-</footer>
-
 <script>
-  // ── SPECTACULAR LETTER SLAM ──
-  const directions = [
-    'translate(-300px, -200px)', 'translate(300px, -200px)',
-    'translate(-250px, 200px)',  'translate(250px, 200px)',
-    'translate(0, -300px)',      'translate(0, 300px)',
-    'translate(-350px, 0)',      'translate(350px, 0)',
-    'translate(-200px, -280px)', 'translate(200px, -280px)',
-    'translate(-280px, 150px)',  'translate(280px, 150px)',
-    'translate(150px, -320px)',  'translate(-150px, 320px)',
+(function(){
+  var HOME = 'Africa/Lagos';
+  var zones = [
+    {city:'Nigeria (me)', tz:HOME, home:true},
+    {city:'Nairobi', tz:'Africa/Nairobi'},
+    {city:'London', tz:'Europe/London'},
+    {city:'New York', tz:'America/New_York'},
+    {city:'San Francisco', tz:'America/Los_Angeles'}
   ];
-  const rotations = ['-25deg','20deg','-15deg','18deg','-22deg','12deg','-18deg','24deg','-10deg','16deg','-20deg','14deg','-28deg','22deg'];
+  var START = 9, END = 17;
+  var rowsEl = document.getElementById('rows');
+  var ticksEl = document.getElementById('ticks');
+  var noteEl = document.getElementById('tzNote');
+  var built = false;
 
-  function slamLetters(elementId, word, baseDelay, isTeal) {
-    const el = document.getElementById(elementId);
-    word.split('').forEach((char, i) => {
-      const span = document.createElement('span');
-      if (char === ' ') {
-        span.className = 'space-letter';
-      } else {
-        span.className = 'bounce-letter';
-        const dir = directions[i % directions.length];
-        const rot = rotations[i % rotations.length];
-        const delay = baseDelay + i * 100;
-        const dur = 750 + Math.random() * 150;
+  function offsetMinutes(tz, d){
+    var parts = new Intl.DateTimeFormat('en-US',{timeZone:tz,hour12:false,year:'numeric',month:'numeric',day:'numeric',hour:'numeric',minute:'numeric',second:'numeric'}).formatToParts(d);
+    var o = {};
+    parts.forEach(function(p){o[p.type]=parseInt(p.value,10)});
+    if(o.hour===24) o.hour=0;
+    return (Date.UTC(o.year,o.month-1,o.day,o.hour,o.minute,o.second)-d.getTime())/60000;
+  }
+  function pct(h){return (h/24*100)+'%'}
+  function segments(a,b){
+    a=((a%24)+24)%24; b=a+(END-START);
+    if(b<=24) return [[a,b]];
+    return [[a,24],[0,b-24]];
+  }
+  function inMine(h){return h>=START && h<END}
+  function overlapHours(d){
+    var n=0;
+    for(var m=0;m<1440;m+=15){
+      var h=m/60, theirs=((h+d)%24+24)%24;
+      if(inMine(h) && inMine(theirs)) n+=0.25;
+    }
+    return n;
+  }
+  function fmt(h){return (Number.isInteger(h)?h:h.toFixed(1).replace('.0',''))}
 
-        span.style.setProperty('--start', dir);
-        span.style.setProperty('--rot', rot);
-        span.style.animationName = 'slamIn';
-        span.style.animationDuration = dur + 'ms';
-        span.style.animationDelay = delay + 'ms';
-        span.style.animationFillMode = 'forwards';
-        span.style.animationTimingFunction = 'cubic-bezier(0.22, 1, 0.36, 1)';
-
-        if (isTeal) {
-          span.style.background = 'linear-gradient(135deg, #0cc5d4 0%, #0E9AA7 50%, #1B6CA8 100%)';
-          span.style.webkitBackgroundClip = 'text';
-          span.style.webkitTextFillColor = 'transparent';
-          span.style.backgroundClip = 'text';
-        }
-
-        // glow flash on land
-        setTimeout(() => {
-          span.classList.add('slammed');
-        }, delay + dur * 0.9);
-      }
-      span.textContent = char;
-      el.appendChild(span);
+  function build(now){
+    var homeOff = offsetMinutes(HOME, now);
+   rowsEl.innerHTML = zones.map(function(z,i){
+      var d = (offsetMinutes(z.tz, now)-homeOff)/60;
+      var segs = segments(START-d);
+      var bands = segs.map(function(s){
+        return '<div class="band" style="left:'+pct(s[0])+';width:'+((s[1]-s[0])/24*100)+'%;animation-delay:'+(i*90)+'ms"></div>';
+      }).join('');
+      var mine = '<div class="mine" style="left:'+pct(START)+';width:'+((END-START)/24*100)+'%"></div>';
+      var meta = z.home ? 'My working hours' : (fmt(overlapHours(d))+' hrs shared with me');
+      return '<div class="row'+(z.home?' home':'')+'" data-tz="'+z.tz+'"><div class="who"><div class="city">'+z.city+'</div><div class="meta"><b class="t"></b> &nbsp;'+meta+'</div></div><div class="track">'+mine+bands+'<div class="nowline"></div></div></div>';
+    }).join('');
+    ticksEl.innerHTML = [0,6,12,18,24].map(function(h){
+      return '<span style="left:'+pct(h)+'">'+(h===24?'24:00':('0'+h).slice(-2)+':00')+'</span>';
+    }).join('');
+    noteEl.textContent = 'Axis shows Nigeria time (WAT)';
+    built = true;
+  }
+  function tick(){
+    var now = new Date();
+    if(!built) build(now);
+    var homeParts = new Intl.DateTimeFormat('en-GB',{timeZone:HOME,hour:'2-digit',minute:'2-digit',hour12:false}).format(now).split(':');
+    var hh = parseInt(homeParts[0],10)+parseInt(homeParts[1],10)/60;
+    Array.prototype.forEach.call(rowsEl.children,function(r){
+      r.querySelector('.t').textContent = new Intl.DateTimeFormat('en-GB',{timeZone:r.getAttribute('data-tz'),hour:'2-digit',minute:'2-digit',hour12:false}).format(now);
+      r.querySelector('.nowline').style.left = pct(hh);
     });
   }
-
-  slamLetters('firstName', 'Olalekan', 200, true);
-  slamLetters('lastName', 'Lucas', 200 + 8 * 100 + 200, false);
-
-
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-
-  // Nav active state
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    nav.style.background = window.scrollY > 50
-      ? 'rgba(7,21,38,0.97)' : 'rgba(13,33,55,0.85)';
-  });
+  tick();
+  setInterval(tick, 30000);
+})();
 </script>
 </body>
 </html>
