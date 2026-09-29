@@ -173,7 +173,7 @@ footer{padding:36px 0 48px;color:var(--ink-soft);font-size:.92rem}
       <h1>Olalekan Lucas</h1>
       <p class="lede"><strong>People and team operations for remote teams.</strong> I hire, onboard, and support distributed teams, write the SOPs that keep them consistent, and turn day-to-day data into reports leaders can act on.</p>
       <div class="actions">
-        <a class="btn primary" href="Olalekan_Lucas_Resume.pdf" download>Download resume</a>
+        <a class="btn primary resume-dl" href="#" download="Olalekan_Lucas_Resume.pdf">Download resume</a>
         <a class="btn ghost" href="#contact">Get in touch</a>
       </div>
 
@@ -363,8 +363,8 @@ footer{padding:36px 0 48px;color:var(--ink-soft);font-size:.92rem}
       <p>I'm open to remote people operations, onboarding, and team enablement roles. Send a note and I'll reply within a day.</p>
       <div class="links">
         <a class="btn primary" href="mailto:lucasfarmpeneur@gmail.com">Email me</a>
-        <a class="btn ghost" href="https://linkedin.com/in/olalekanlucas" rel="noopener">View LinkedIn</a>
-        <a class="btn ghost" href="Olalekan_Lucas_Resume.pdf" download>Download resume</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/olalekan-lucas-a96412248" rel="noopener">View LinkedIn</a>
+        <a class="btn ghost resume-dl" href="#" download="Olalekan_Lucas_Resume.pdf">Download resume</a>
       </div>
     </section>
   </main>
@@ -415,8 +415,8 @@ footer{padding:36px 0 48px;color:var(--ink-soft);font-size:.92rem}
   function fmt(h){return (Number.isInteger(h)?h:h.toFixed(1).replace('.0',''))}
 
   function build(now){
-    var homeOff = offsetMinutes(HOME, now);
-   rowsEl.innerHTML = zones.map(function(z,i){
+    varhomeOff = offsetMinutes(HOME, now);
+    rowsEl.innerHTML = zones.map(function(z,i){
       var d = (offsetMinutes(z.tz, now)-homeOff)/60;
       var segs = segments(START-d);
       var bands = segs.map(function(s){
@@ -444,6 +444,12 @@ footer{padding:36px 0 48px;color:var(--ink-soft);font-size:.92rem}
   }
   tick();
   setInterval(tick, 30000);
+})();
+(function(){
+  var links = document.querySelectorAll('.resume-dl');
+  Array.prototype.forEach.call(links,function(a){
+    a.setAttribute('href','Olalekan_Lucas_General_Resume.pdf');
+  });
 })();
 </script>
 </body>
